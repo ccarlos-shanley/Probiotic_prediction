@@ -2,7 +2,7 @@
 
 Data was obtained from: ftp://ftp.microbio.me/AmericanGut/ag-April-26-2017/07-taxa.zip
 
-Dataset was manually curated to remove redundant variables, no fecal samplas and low variance data
+Dataset was manually curated to remove redundant and uninformative variables
 
 Need for probiotic was defined based on the ratio between Firmicutes and Bacteroidetes.
 
@@ -16,6 +16,7 @@ if FBratio>= 1.0 and Fbratio <= 5.6:
 # Analyses were performed in R:
   
 library("e1071")
+
 library("party")
 
 # Import dataset
@@ -40,6 +41,7 @@ set.seed(1234)
 train.index <- sample(seq_len(nrow(agut)), size = 7500)
 
 train.set <- agut[train.index, ]
+
 test.set <- agut[-train.index, ]
  
 
